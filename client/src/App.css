@@ -1,0 +1,92 @@
+.infographicBlock {
+  display: block;  
+  width: 100%;
+  text-align: center;
+  margin: 200 200;
+  padding: 50 50;
+}
+.fullWidth {
+  width: 98% !important;
+  margin: 10px 10px !important;
+  padding: 5 !important;
+}
+.yellowStar{
+  color: #F2E600;
+}
+.flexContainer {
+  display: flex;
+  flex-flow: row;
+}
+.flexsideHeader {
+  flex: 1 auto;
+  margin-right: 20px;
+}
+.flexside {
+  flex: 1 auto;
+}
+.flexsideCenter {
+  flex: 1 auto;
+  margin: auto;
+  width: 50%;
+  text-align: right;
+}
+.flexmiddle {
+  flex: 3 0px;
+}
+.flexpassword {
+  flex: 3;
+  margin-top: 15px;
+  text-align: left;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Modal-Header {
+  color: black;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.vertical-center {
+  text-align:center;
+}
+
+.header-modal{
+  color:black
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
