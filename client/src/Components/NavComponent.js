@@ -8,82 +8,94 @@ import { addActiveNav } from '../redux'
 
 function NavComponent (props) {
   function handleItemClick (data){ 
-    props.addActiveNav(data.name)
+    props.addActiveNav(data)
 }
 
   return (
-        <div>
-            <Link to="/">
-            <h3
-            name='home'
-            active={props.activeNav === 'home'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Home
-            </h3>
-            </Link>
-            <Link to="/charts">
-            <h3
-            name='charts'
-            active={props.activeNav === 'charts'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Charts
-            </h3>
-            </Link>
-            <Link to="/posts">
-            <h3
-            name='forum'
-            active={props.activeNav === 'forum'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Posts
-            </h3>
-            </Link>
-        {props.isAuthenticated ? 
-         <div>   
-            <Link to="/account">
-            <h3
-            name='account'
-            active={props.activeNav === 'account'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Account
-            </h3>
-            </Link>
-            <Link to="/logout">
-            <h3
-            name='logout'
-            active={props.activeNav === 'logout'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Logout
-            </h3>
-            </Link>
-       </div>
-        :
-         <div>  
-            <Link to="/login">
-            <h3
-            name='login'
-            active={props.activeNav === 'login'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Login
-            </h3>
-            </Link>
-            <Link to="/register">
-            <h3
-            name='register'
-            active={props.activeNav === 'register'}
-            onClick={(e,data) => handleItemClick(data)}
-            >
-            Sign Up
-            </h3>
-            </Link>
-     </div>
-        }
- </div>
+    <div>
+      
+      {props.isAuthenticated ? 
+      <div className="flexContainer">
+        <div className="flexside">
+          <Link to="/">
+          <h3>
+          <a 
+          href="#"
+          name='home'
+          active={props.activeNav === 'home'}
+          onClick={(e,data) => handleItemClick('home')}
+          >
+          Objective Deck
+          </a>
+          </h3>
+          </Link>
+        </div>
+        <div className="flexmiddle"></div>
+        <div className="flexsideHeader">   
+          <Link to="/account">
+          <h3
+          name='account'
+          active={props.activeNav === 'account'}
+          onClick={(e,data) => handleItemClick('account')}
+          >
+          Account
+          </h3>
+          </Link>
+        </div>
+        <div className="flexsideHeader">   
+          <Link to="/logout">
+          <h3
+          name='logout'
+          active={props.activeNav === 'logout'}
+          onClick={(e,data) => handleItemClick('logout')}
+          >
+          Logout
+          </h3>
+          </Link>
+        </div>
+      </div>
+      :
+      <div className="flexContainer">
+        <div className="flexside">
+        <Link to="/">
+        <h3
+          name='home'
+          active={props.activeNav === 'home'}
+          onClick={(e,data) => handleItemClick('home')}
+          >
+          Objective Deck
+          </h3>
+        </Link>
+        </div>
+        <div className="flexmiddle"></div>
+        <div className="flexsideHeader">  
+          
+          <h5>
+          <a 
+          href="#"
+          name='login'
+          active={props.activeNav === 'login'}
+          onClick={(e,data) => handleItemClick('login')}
+          >
+          Login
+          </a>
+          </h5>
+
+        </div>
+        <div className="flexsideHeader"> 
+          <Link to="/register">
+          <h5
+          name='register'
+          active={props.activeNav === 'register'}
+          onClick={(e,data) => handleItemClick('register')}
+          >
+          Sign Up
+          </h5>
+          </Link>
+        </div>
+        </div>
+          }
+    </div>
   )
 }
 const mapStateToProps = state => {

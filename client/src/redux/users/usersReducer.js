@@ -7,7 +7,7 @@ import { USER_AUTHENTICATED, POST_RESPONSE, IS_AUTHENTICATED, ACTIVE_NAV, EMAIL_
       isAuthenticated: false,
       userAuth: {},
       postResponse: {},
-      activeNav: 'home',
+      activeNav: 'none',
       emailAlreadyUsed: false,
       photoUpdated: false,
       emailUpdated: false,

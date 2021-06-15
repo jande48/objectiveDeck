@@ -4,6 +4,7 @@ import Home from './Components/Home'
 import store from './redux/store'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import NavComponent from './Components/NavComponent'
+import LoginContainer from './Components/LoginContainer'
 import { Provider } from 'react-redux'
 
 function App() {
@@ -12,7 +13,15 @@ function App() {
       <Provider store={store}>
         <Router>
           <NavComponent/>
-          <Switch></Switch>
+          <Home/>
+          <Switch>
+            {/* <Route path="/login" component={LoginContainer} /> 
+            <Route path="/logout" component={LogoutContainer} /> 
+            <Route path="/register" component={RegisterContainer} /> 
+            <Route path="/account" component={AccountContainer} /> 
+            <Route path="/resetPassword" component={ResetPasswordContainer} /> 
+            <Route path="/" component={HomeComponent} /> */}
+          </Switch>
         </Router>
       </Provider>
       {/* <header className="App-header">

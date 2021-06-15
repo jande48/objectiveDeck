@@ -5,6 +5,13 @@
   margin: 200 200;
   padding: 50 50;
 }
+h5,.h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  cursor: pointer;
+}
 .fullWidth {
   width: 98% !important;
   margin: 10px 10px !important;
@@ -13,16 +20,33 @@
 .yellowStar{
   color: #F2E600;
 }
+.flexButton{
+    border: none;
+    text-decoration: none;
+    color: #F9F8F1;
+    background-color: #2B2B60;
+    cursor: pointer;
+}
 .flexContainer {
   display: flex;
   flex-flow: row;
+
 }
 .flexsideHeader {
   flex: 1 auto;
-  margin-right: 20px;
+  margin-top: 12px;
+  text-align: center;
 }
+.flexsideHeader h3 {
+  cursor: pointer;
+  color: #F9F8F1;
+  text-decoration: none;
+}
+
 .flexside {
   flex: 1 auto;
+  margin-top: 5px;
+  margin-left: 5px;
 }
 .flexsideCenter {
   flex: 1 auto;
@@ -31,7 +55,8 @@
   text-align: right;
 }
 .flexmiddle {
-  flex: 3 0px;
+  flex: 7 0px;
+
 }
 .flexpassword {
   flex: 3;
