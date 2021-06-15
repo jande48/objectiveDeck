@@ -8,6 +8,7 @@ WORKDIR /usr/cache
 COPY package.json .
 
 RUN npm install -q
+
 #RUN npm ci -qy
 
 RUN mkdir /usr/app

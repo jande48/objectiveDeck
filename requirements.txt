@@ -1,3 +1,16 @@
 flask
 gunicorn
 pytest
+Flask-Migrate
+Flask-SQLAlchemy
+psycopg2
+itsdangerous 
+Flask-Login
+Flask-WTF
+WTForms
+Flask-Bcrypt
+Flask-Mail
+Pillow
+email_validator
+cryptography
+jwt

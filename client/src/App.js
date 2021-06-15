@@ -1,10 +1,20 @@
 import React from 'react';
 import './App.css';
 import Home from './Components/Home'
+import store from './redux/store'
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import NavComponent from './Components/NavComponent'
+import { Provider } from 'react-redux'
 
 function App() {
   return (
     <div>
+      <Provider store={store}>
+        <Router>
+          <NavComponent/>
+          <Switch></Switch>
+        </Router>
+      </Provider>
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,9 +30,9 @@ function App() {
         </a>
         <br/><p>From server: <span id="server"> </span></p>
       </header> */}
-      <div className="infographicBlock">
+      {/* <div className="infographicBlock">
         <Home />
-      </div>
+      </div> */}
     </div>
   );
 }
