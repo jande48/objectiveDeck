@@ -10,8 +10,8 @@ function LoginContainer (props) {
     const [password, setPassword] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
     const [showEmailWarning, setShowEmailWarning] = useState(false)
-    const handleEmailChange = (e, data) => setEmail(data.value)
-    const handlePasswordChange = (e, data) => setPassword(data.value)
+    const handleEmailChange = (e, data) => setEmail(e.target.value)
+    const handlePasswordChange = (e, data) => setPassword(e.target.value)
     const handleRememberMeChange = (e, data) => setRememberMe(!rememberMe) 
     const [modalOpenArray, setModalOpenArray] = useState({'activated':'none'})
     Modal.setAppElement('#root');
@@ -46,24 +46,31 @@ return (
 <div>
   { props.isAuthenticated ? <Redirect to="/" /> : ''}
   {w > 700 ?
-  <div>
-  <Modal isOpen={modalOpenArray['activated']!=='none'}>
-    <div className="vertical-center">
-      <h4>Please enter your email and password</h4>
-      <form method="POST" id="myForm" action="/addPrefixSuffix" enctype="multipart/form-data">
-        <div class="form-group">
-        <input
-        id='form-input-control-email'
-        label='Email'
-        placeholder='joe@schmoe.com'
-        onChange={handleEmailChange}
-        />
-        </div>
-        <button type="submit" class="btn btn-primary btn-lg">Login</button>
-      </form>
-      <button type="button" className="btn btn-danger btn-lg" onClick={() => setModalOpenArray({'activated':'none'})}>Close</button>
+  <div className="flexContainer">
+    <div className="flexsideLogin"></div>
+    <div className="flexmiddleLogin">
+    <form>
+      <div className="form-group">
+        <label for="Email">Email Address: </label>
+        <input type="email" className="form-control" id="Email" aria-describedby="emailHelp" placeholder="Enter Email" onChange={handleEmailChange}/>
+        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div className="form-group">
+        <label for="Password">Password: </label>
+        <input type="password" className="form-control" id="Password" placeholder="Password" onChange={handlePasswordChange}/>
+      </div>
+      <div className="form-check">
+        <input type="checkbox" className="form-check-input" id="CheckRemember"/>
+        <label className="form-check-label" for="CheckRemember" onChange={handleRememberMeChange}>Remember Me</label>
+      </div>
+      
+    </form>
+    <button className="btn btn-primary btn-lg" onClick={handleSubmit}>Login</button>
+    { props.loginFailed ? 
+       <h3>Incorrect email or password. </h3>
+     : ''}
     </div>
-  </Modal>
+    <div className="flexsideLogin"></div>
   </div>
 //   <Grid columns='equal'>
 //     <Grid.Column></Grid.Column>

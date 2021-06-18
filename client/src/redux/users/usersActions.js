@@ -243,7 +243,7 @@ import { USER_AUTHENTICATED, POST_RESPONSE, IS_AUTHENTICATED, ACCOUNT_UPDATED, A
   export function fetchUserAuth(data) {
       return function (dispatch)  {
   
-          axios.post('/users/auth/',data).then(res => {
+          axios.post('/api/users/auth/',data).then(res => {
               const token = res.data;
               localStorage.setItem('jwtToken',token)
               setAuthorizationToken(token)
@@ -254,8 +254,13 @@ import { USER_AUTHENTICATED, POST_RESPONSE, IS_AUTHENTICATED, ACCOUNT_UPDATED, A
   }
   export function fetchLogin(data) {
     return function (dispatch)  {
-  
-        axios.post('/users/login/',data).then(res => {
+        // fetch('/api/users/auth/').then( response => response.json()).then( data => {
+        //     console.log(data)
+        //     dispatch(addLoginFailed(true))
+        // })
+        axios.post('/api/users/login',data).then(res => {
+            console.log(res)
+            console.log(res.data)
             const token = res.data;
             const checkAuth = jwt.decode(token)
             if (!checkAuth['isAuthenticated']) {
@@ -266,7 +271,11 @@ import { USER_AUTHENTICATED, POST_RESPONSE, IS_AUTHENTICATED, ACCOUNT_UPDATED, A
               dispatch(addUserAuthenticated(jwt.decode(token)))
               {jwt.decode(token)['isAuthenticated'] ? dispatch(addIsAuthenticated(true)) : dispatch(addIsAuthenticated(false))}
             }
+        
+        
         })
+    
+
     }
   }
   export function fetchRegister(data) {

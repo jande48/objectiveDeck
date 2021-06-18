@@ -1,11 +1,11 @@
 import os
 import secrets
 from PIL import Image
-from flask import url_for
+from flask import url_for, current_app
 from flask_mail import Message
-from server.create_app import mail, application
+from server.create_app import mail
 
-app = application
+app = current_app
 
 def save_picture(form_picture):
     random_hex = secrets.token_hex(8)

@@ -1,4 +1,4 @@
-Jacob Anderson PhD (jacobanderson.dev)
+Jacob Anderson =
 =================
 
 This site is objective deck site designed to analyze pokemon cards

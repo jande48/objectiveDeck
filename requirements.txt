@@ -13,4 +13,4 @@ Flask-Mail
 Pillow
 email_validator
 cryptography
-jwt
+PyJWT

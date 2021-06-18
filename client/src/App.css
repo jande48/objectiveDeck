@@ -37,6 +37,7 @@ h5,.h5 {
   margin-top: 12px;
   text-align: center;
 }
+
 .flexsideHeader h3 {
   cursor: pointer;
   color: #F9F8F1;
@@ -45,8 +46,8 @@ h5,.h5 {
 
 .flexside {
   flex: 1 auto;
-  margin-top: 5px;
-  margin-left: 5px;
+  margin-top: 15px;
+  margin-left: 15px;
 }
 .flexsideCenter {
   flex: 1 auto;
@@ -62,6 +63,17 @@ h5,.h5 {
   flex: 3;
   margin-top: 15px;
   text-align: left;
+}
+.flexsideLogin {
+  flex: 1 auto;
+  margin-top: 12px;
+  text-align: center;
+}
+.flexmiddleLogin {
+  flex: 5 0px;
+  margin: auto;
+  width: 50%;
+  color: #2B2B60;
 }
 .App {
   text-align: center;

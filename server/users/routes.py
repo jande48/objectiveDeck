@@ -1,18 +1,21 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
-from server.create_app import db, bcrypt, application
+from server.create_app import db, bcrypt
 from server.models import User
 from server.users.forms import (RegistrationForm, LoginForm, UpdateAccountForm,
                                    RequestResetForm, ResetPasswordForm)
 from server.users.utils import save_picture, send_reset_email, send_contact_email
 from flask import Blueprint
-import jwt, os
+import jwt, os, json
 
-application.config['SECRET_KEY'] = os.environ.get('ObjectiveDeckSecretKey')
+#app = current_app
+#app.config['SECRET_KEY'] = os.environ.get('AlgoPlatformSecretKey')
+secretKey = os.environ.get('ObjectiveDeckSecretKey')
 users = Blueprint('users',__name__)
 
-@users.route("/users/auth/", methods=['GET','POST'])
+@users.route("/api/users/auth/", methods=['GET','POST'])
 def user_auth():
+    #return json.dumps('hello world')
     if current_user.is_authenticated:
         payload = {'isAuthenticated': True,
                    'username': current_user.username,
@@ -20,16 +23,16 @@ def user_auth():
                    'image_file': current_user.image_file}
         return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            app.config['SECRET_KEY']
         )
     else:
         payload = {'isAuthenticated': False}
         return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            app.config['SECRET_KEY']
         )
 
-@users.route("/users/login/", methods=['GET','POST'])
+@users.route("/api/users/login", methods=['GET','POST'])
 def user_login():
     JSON_sent = request.get_json()
     user = User.query.filter_by(email=JSON_sent['email']).first()
@@ -41,12 +44,12 @@ def user_login():
                    'image_file': user.image_file}
         return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            secretKey
         )
     payload = {'isAuthenticated': False}
     return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            app.config['SECRET_KEY']
         )
 @users.route("/users/logout/", methods=['GET','POST'])
 def user_logout():
@@ -54,7 +57,7 @@ def user_logout():
     payload = {'isAuthenticated': False}
     return jwt.encode(
         payload,
-        application.config['SECRET_KEY']
+        app.config['SECRET_KEY']
     )
     
 @users.route("/users/register/", methods=['GET','POST'])
@@ -68,7 +71,7 @@ def users_register():
         }
         return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            app.config['SECRET_KEY']
         )
     hashed_password = bcrypt.generate_password_hash(JSON_sent['password']).decode('utf-8')
     user = User(username=JSON_sent['username'], email=JSON_sent['email'], password=hashed_password)
@@ -85,7 +88,7 @@ def users_register():
         }
     return jwt.encode(
         payload,
-        application.config['SECRET_KEY']
+        app.config['SECRET_KEY']
     )
 
 @users.route("/users/updatePhoto/", methods=['POST'])
@@ -104,7 +107,7 @@ def users_update_photo():
         }
         return jwt.encode(
             payload,
-            application.config['SECRET_KEY']
+            app.config['SECRET_KEY']
         )
 @users.route("/users/updateAccount/", methods=['POST'])
 @login_required
@@ -138,7 +141,7 @@ def users_update_account():
 
     return jwt.encode(
     payload,
-    application.config['SECRET_KEY']
+    app.config['SECRET_KEY']
     )
 
 
